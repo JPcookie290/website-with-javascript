@@ -29,6 +29,17 @@ function expandHtml(parent, tags) {
     });
 }
 
+function addIdAndClass(items, nameClass, nameId) {
+    for (let element of items) {
+        if (nameClass != '-') {
+            element.classList.add(nameClass);
+        }
+        if (nameId != '-') {
+            element.setAttribute("id", nameId);
+        }
+    }
+}
+
 function addDifferentIdAndClass(items, nameClassArr, nameIdArr) {
 
     for (let index = 0; index < items.length; index++) {
@@ -54,4 +65,4 @@ function addOneIdAndClass(items, element, nameClass, nameId) {
 }
 
 
-export { createTags, createMoreTags, createHtml, expandHtml, addOneIdAndClass, addDifferentIdAndClass};
+export { createTags, createMoreTags, createHtml, expandHtml, addIdAndClass, addOneIdAndClass, addDifferentIdAndClass};
