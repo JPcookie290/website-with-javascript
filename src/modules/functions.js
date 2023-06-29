@@ -35,15 +35,22 @@ function addDifferentIdAndClass(items, nameClassArr, nameIdArr) {
         const element = items[index];
         const nameClass = nameClassArr[index];
         const nameId = nameIdArr[index];
-        element.classList.add(nameClass);
-        element.setAttribute("id", nameId);
+        if (nameClass != '-') {
+            element.classList.add(nameClass);
+        }
+        if (nameId != '-') {
+            element.setAttribute("id", nameId);
+        }
     }
-    console.log(items);
 }
 
 function addOneIdAndClass(items, element, nameClass, nameId) {
-    items[element].classList.add(nameClass);
-    items[element].setAttribute("id", nameId);
+    if (nameClass != '-') {
+        items[element].classList.add(nameClass);
+    }
+    if (nameId != '-') {
+        items[element].setAttribute("id", nameId);
+    } 
 }
 
 
