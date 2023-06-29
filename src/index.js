@@ -1,11 +1,11 @@
 
-import { createTags, expandHtml} from './modules/functions';
+import { createTags, createHtml, createMoreTags, expandHtml, addOneIdAndClass, addDifferentIdAndClass} from './modules/functions';
 
-//console.log(createTags(['div', 'h1', 'h2', 'p']));
+const htmlTags = createTags(['h1', 'h2', 'ul']);
+const htmlListTags = createMoreTags('li', 3)
 
-const htmlTags = createTags(['h1', 'h2', 'button']);
-const test = expandHtml('header', htmlTags);
-
-
-console.log(test, document.body);
-document.body.appendChild(test);
+console.log(1, htmlTags);
+//addOneIdAndClass(htmlTags, 1, 'try1', 'try2');
+addDifferentIdAndClass(htmlTags, ['class1', 'class2', 'class3'], ['id1', 'id2', 'id3'])
+createHtml('header', htmlTags, 'h2');
+expandHtml('ul', htmlListTags)
