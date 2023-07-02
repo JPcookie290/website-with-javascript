@@ -14,55 +14,56 @@ function createMoreTags(type, num) {
     return tags
 }
 
-function createHtml(parent, tags) {
+function createHtml(parent, tags, nameClass, nameId) {
     const p = document.createElement(parent)
-    for (let item of tags) {
+    if (nameClass[0] != '-') {
+        p.classList.add(nameClass[0]);
+    }
+    if (nameId[0] != '-') {
+        p.setAttribute("id", nameId[0]);
+    }
+    for (let index = 0; index < tags.length; index++) {
+        let item = tags[index]
+        if (nameClass[index+1] != '-') {
+            item.classList.add(nameClass[index+1]);
+        }
+        if (nameId[index+1] != '-') {
+            item.setAttribute("id", nameId[index+1]);
+        }
         p.appendChild(item);
     }
 
     document.body.appendChild(p)
 }
 
-function expandHtml(parent, tags) {
-    tags.forEach(tag => {
-        document.querySelector(parent).appendChild(tag);
-    });
-}
-
-function addIdAndClass(items, nameClass, nameId) {
-    for (let element of items) {
-        if (nameClass != '-') {
-            element.classList.add(nameClass);
+function expandHtml(parent, tags, nameClass, nameId) {
+    console.log(nameClass, nameId);
+    for (let index = 0; index < tags.length; index++) {
+        const item = tags[index];
+        console.log(tags[index],nameClass[index],nameId[index]);
+        if (nameClass[index] != '-') {
+            item.classList.add(nameClass[index]);
         }
-        if (nameId != '-') {
-            element.setAttribute("id", nameId);
+        if (nameId[index] != '-') {
+            item.setAttribute("id", nameId[index]);
         }
+        document.querySelector(parent).appendChild(item)
     }
 }
 
-function addDifferentIdAndClass(items, nameClassArr, nameIdArr) {
-
-    for (let index = 0; index < items.length; index++) {
-        const element = items[index];
-        const nameClass = nameClassArr[index];
-        const nameId = nameIdArr[index];
-        if (nameClass != '-') {
-            element.classList.add(nameClass);
-        }
-        if (nameId != '-') {
-            element.setAttribute("id", nameId);
-        }
+function addText(tags, texts){
+    for (let index = 0; index < tags.length; index++) {
+        let item = tags[index];
+        let content = texts[index]
+        item.textContent = content;
     }
 }
 
-function addOneIdAndClass(items, element, nameClass, nameId) {
-    if (nameClass != '-') {
-        items[element].classList.add(nameClass);
-    }
-    if (nameId != '-') {
-        items[element].setAttribute("id", nameId);
-    } 
+function addPic(parent, picture) {
+    let myPic = new Image();
+    myPic.src = picture;
+    document.querySelector(parent).appendChild(myPic);
 }
 
 
-export { createTags, createMoreTags, createHtml, expandHtml, addIdAndClass, addOneIdAndClass, addDifferentIdAndClass};
+export { createTags, createMoreTags, createHtml, expandHtml, addText, addPic};
